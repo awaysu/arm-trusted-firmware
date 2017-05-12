@@ -34,6 +34,13 @@
 #include <bl_common.h>
 #include <platform_def.h>
 
+
+void gic_cpuif_deactivate(unsigned int gicc_base);
+void gic_cpuif_setup(unsigned int gicc_base);
+void gic_pcpu_distif_setup(unsigned int gicd_base);
+void gic_setup(void);
+
+
 typedef volatile struct mailbox {
 	unsigned long value
 	__attribute__((__aligned__(CACHE_WRITEBACK_GRANULE)));
@@ -62,7 +69,7 @@ void sunxi_configure_mmu_el3(unsigned long total_base,
 int sunxi_config_setup(void);
 
 /* Declarations for sunxi_topology.c */
-int plat_setup_topology(void);
+int sunxi_setup_topology(void);
 
 /* Declarations for sunxi_io_storage.c */
 void sunxi_io_setup(void);
